@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.android.notepad">
+
+    <application
+        android:icon="@drawable/app_notes"
+        android:label="@string/app_name">
+        <!--换背景色-->
+        <activity android:name="NoteColor"
+            android:theme="@android:style/Theme.Holo.Light.Dialog"
+            android:label="ChangeColor"
+            android:windowSoftInputMode="stateVisible"/>
+
+        <provider
+            android:name=".NotePadProvider"
+            android:authorities="com.google.provider.NotePad"
+            android:exported="false">
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+
+        <activity xmlns:tools="http://schemas.android.com/tools"
+            android:name=".NotesList"
+            android:theme="@android:style/Theme.Holo.Light"
+            android:label="@string/title_notes_list">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.dir/vnd.google.note" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/vnd.google.note" />
+            </intent-filter>
+        </activity>
+        <activity xmlns:tools="http://schemas.android.com/tools"
+            android:name=".NoteEditor"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="sensor"
+            android:theme="@android:style/Theme.Holo.Light">
+
+            <!--
+                 This filter says that we can view or edit the data of
+                 a single note
+            -->
+            <intent-filter
+                android:label="@string/resolve_edit"
+                tools:ignore="AppLinkUrlError">
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <action android:name="com.android.notepad.action.EDIT_NOTE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.item/vnd.google.note" />
+            </intent-filter>
+
+            <!--
+                 This filter says that we can create a new note inside
+                 of a directory of notes.  The INSERT action creates an
+                 empty note; the PASTE action initializes a new note from
+                 the current contents of the clipboard.
+            -->
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+                <action android:name="android.intent.action.PASTE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.dir/vnd.google.note" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NoteSearch"
+            android:label="NoteSearch">
+            <intent-filter>
+                <action android:name="android.intent.action.NoteSearch" />
+                <action android:name="android.intent.action.SEARCH" />
+                <action android:name="android.intent.action.SEARCH_LONG_PRESS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="vnd.android.cursor.dir/vnd.google.note" />
+                <!-- 1.vnd.android.cursor.dir代表返回结果为多列数据 -->
+                <!-- 2.vnd.android.cursor.item 代表返回结果为单列数据 -->
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TitleEditor"
+            android:icon="@drawable/ic_menu_edit"
+            android:label="@string/title_edit_title"
+            android:theme="@android:style/Theme.Holo.Dialog"
+            android:windowSoftInputMode="stateVisible">
+
+            <!--
+                 This activity implements an alternative action that can be
+                 performed on notes: editing their title.  It can be used as
+                 a default operation if the user invokes this action, and is
+                 available as an alternative action for any note data.
+            -->
+            <intent-filter android:label="@string/resolve_title">
+
+                <!--
+                     This is the action we perform.  It is a custom action we
+                     define for our application, not a generic VIEW or EDIT
+                     action since we are not a general note viewer/editor.
+                -->
+                <action android:name="com.android.notepad.action.EDIT_TITLE" />
+                <!-- DEFAULT: execute if being directly invoked. -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!--
+                     ALTERNATIVE: show as an alternative action when the user is
+                     working with this type of data.
+                -->
+                <category android:name="android.intent.category.ALTERNATIVE" />
+                <!--
+                     SELECTED_ALTERNATIVE: show as an alternative action the user
+                     can perform when selecting this type of data.
+                -->
+                <category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+                <!-- This is the data type we operate on. -->
+                <data android:mimeType="vnd.android.cursor.item/vnd.google.note" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".NotesLiveFolder"
+            android:icon="@drawable/live_folder_notes"
+            android:label="@string/live_folder_name">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_LIVE_FOLDER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
