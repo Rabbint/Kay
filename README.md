@@ -1,17 +1,8 @@
 # Kay
-test for android class
-实验二
-https://github.com/Rabbint/Kay/blob/master/Test2.md
-Andriod布局实验  
-1.LinearLayout  
-效果展示  
-![picture1](https://github.com/Rabbint/Kay/blob/master/Layout/ScreenShot/1.png)  
-2.ConstraitLayout  
-效果展示  
-![picture](https://github.com/Rabbint/Kay/blob/master/Layout/ScreenShot/3.png)  
-3.表格布局  
-效果展示  
-![picture](https://github.com/Rabbint/Kay/blob/master/Layout/ScreenShot/2.png) 
+##test for android class
+###实验二
+[实验二](https://github.com/Rabbint/Kay/blob/master/Test2.md)  
+
   
 实验三  
 Android UI组件  
