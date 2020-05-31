@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,3 +44,8 @@
     <string name="error_message">Error loading note</string>
     <string name="nothing_to_save">There is nothing to save</string>
 </resources>
+=======
+<resources>
+    <string name="app_name">My Application</string>
+</resources>
+>>>>>>> 1fbe17468b64d3d0766c004b912993d62c17440c

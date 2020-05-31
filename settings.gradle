@@ -1,2 +1,6 @@
 include ':app'
+<<<<<<< HEAD
 rootProject.name='NotePad'
+=======
+rootProject.name='My Application'
+>>>>>>> 1fbe17468b64d3d0766c004b912993d62c17440c
