@@ -1,5 +1,5 @@
 # Kay
-## test for android class
+## Android Course Exercise
 ### 实验二  
 [实验二Readme](https://github.com/Rabbint/Kay/blob/master/Test2.md)  
 
